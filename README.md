@@ -1,73 +1,50 @@
-# Welcome to your Lovable project
+# EntertainmentHub
 
-## Project info
+Discover and bookmark trending movies and TV series with a React + Vite + TypeScript frontend styled with Tailwind and Shadcn UI. Data is pulled from the OMDb API, and basic auth/bookmark state is stored locally.
 
-**URL**: https://lovable.dev/projects/7f362c81-fdc8-4d63-968b-aa461b12ea54
+## Features
+- Trending movies and TV series fetched from curated IMDb IDs via OMDb.
+- Global search across movies and series with results grid and loading states.
+- Detail views for movies and TV entries with poster, year, rating and plot.
+- Local bookmarks with add/remove persistence in `localStorage`.
+- Mock login/signup flows that store a demo user/token locally (no backend).
+- Responsive layout with sidebar navigation, tooltips, toasts and skeleton loaders.
 
-## How can I edit this code?
+## Tech Stack
+- React 18, TypeScript, Vite
+- Redux Toolkit for state, React Query for async caching
+- React Router v6 for routing
+- Tailwind CSS + Shadcn UI + Radix primitives
+- OMDb API for media data
 
-There are several ways of editing your application.
+## Getting Started
+Prerequisites: Node.js 18+ and npm.
 
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/7f362c81-fdc8-4d63-968b-aa461b12ea54) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
+git clone <repo-url>
+cd EntertainmentHub
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Open the printed local dev URL (default `http://localhost:5173`).
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Environment Notes
+- OMDb API key is currently set in `src/lib/omdb.ts` (`OMDB_API_KEY`). Replace it with your own key before going public. For better security, consider moving it to an environment variable and wiring it through Vite (`import.meta.env.VITE_OMDB_API_KEY`).
+- Bookmarks and auth data are stored in `localStorage`; clear it to reset.
 
-**Use GitHub Codespaces**
+## Available Scripts
+- `npm run dev` – start the dev server.
+- `npm run build` – build for production.
+- `npm run preview` – preview the production build.
+- `npm run lint` – run eslint.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Project Structure (high level)
+- `src/pages` – route views (Home, Movies, TV, Details, Auth, NotFound).
+- `src/components` – UI primitives and layout (Shadcn + custom).
+- `src/store` – Redux store and slices (auth, bookmarks, movies, tv).
+- `src/lib/omdb.ts` – OMDb fetch helpers and curated trending lists.
 
-## What technologies are used for this project?
+## Authentication
+Login/Signup screens use a mocked flow for now. Replace the logic in `src/pages/Login.tsx` and `src/pages/Signup.tsx` with real API calls when integrating a backend.
 
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/7f362c81-fdc8-4d63-968b-aa461b12ea54) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
