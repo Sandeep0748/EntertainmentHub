@@ -1,0 +1,11 @@
+1. Keep the OMDb API key out of source control; use Vite env vars (VITE_OMDB_API_KEY) and a .env.local entry, never hardcode keys in ts files.
+2. Normalize API responses in helpers (e.g., src/lib/omdb.ts) so components receive typed, presentation-ready data and avoid duplicating parsing logic.
+3. Use React Query for network state and caching; prefer query keys that include params (e.g., ["search", term]) and enable stale-while-revalidate patterns.
+4. Co-locate component-specific hooks and styles; keep presentational components dumb and push data fetching/state to pages or feature hooks.
+5. Gate all routes that require auth/bookmarks with a central guard (e.g., layout or higher-order route element) rather than ad-hoc checks inside pages.
+6. Keep Redux slices focused on client-only state (auth token stub, bookmarks); avoid mixing remote fetching logic inside reducers—use thunks or RTK Query-like patterns.
+7. Persist only minimal state to localStorage (bookmarks, auth token); validate and migrate stored shapes to avoid runtime errors after schema changes.
+8. Maintain accessibility: use semantic elements, keyboard focus styles, aria labels for icon buttons, and ensure Shadcn/Radix components are configured accessibly.
+9. Favor reusable UI primitives (buttons, cards, skeletons, tooltips) and keep design tokens (colors, spacing) in Tailwind config to ensure visual consistency.
+10. Add tests for critical flows: search results rendering, bookmark add/remove persistence, route guards, and error states when OMDb quota or network fails.
+
